@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/jquery-1.8.2.js"></script>
+    <script type="text/javascript">
+        $("#form1").submit(function () {
+            var jqxhr = $.post('api/updates/simple', { "": $('#data').val() })
+                .success(function () {
+                    var loc = jqxhr.getResponseHeader('Location');
+                    var a = $('<a/>', { href: loc, text: loc });
+                    $('#message').html(a);
+                })
+                .error(function () {
+                    $('#message').html("Error posting the update.");
+                });
+            return false;
+        });
+    </script>
+</head>
+<body>
+    <form id="form1" method="post" action="api/updates/simple">
+        <div>
+            <label for="status">Status</label>
+        </div>
+        <div>
+            <input name="status1" type="text" />
+        </div>
+        <div>
+            <label for="date">Date</label>
+        </div>
+        <div>
+            <input name="date" type="text" />
+        </div>
+        <div>
+            <input type="hidden" name="data" value="%7b%0d%0%22callid%22%3a+%2299000644141418212537%22%2c%0d%0a++%22calid%22%3a+%223441%22%2c%0d%0a++%22refid%22%3a+%223441%22%2c%0d%0a++%22bid%22%3a+%22NDU1%22%2c%0d%0a++%22gid%22%3a+%22Total+Environment%22%2c%0d%0a++%22assignto%22%3a+%22Ashraya%22%2c%0d%0a++%22eid%22%3a+%22Ashraya%22%2c%0d%0a++%22source%22%3a+%22calltrack%22%2c%0d%0a++%22hid%22%3a+%22%22%2c%0d%0a++%22callfrom%22%3a+%229900064414%22%2c%0d%0a++%22callto%22%3a+%227259041125%22%2c%0d%0a++%22starttime%22%3a+%222015-12-10+17%3a25%3a38%22%2c%0d%0a++%22endtime%22%3a+%222015-12-10+17%3a25%3a38%22%2c%0d%0a++%22pulse%22%3a+%220%22%2c%0d%0a++%22callername%22%3a+%22%22%2c%0d%0a++%22callerbusiness%22%3a+%22%22%2c%0d%0a++%22calleraddress%22%3a+%22%22%2c%0d%0a++%22remark%22%3a+%22%22%2c%0d%0a++%22sms_content%22%3a+%22%22%2c%0d%0a++%22caller_email%22%3a+%22%22%2c%0d%0a++%22status%22%3a+%221%22%2c%0d%0a++%22keyword%22%3a+%22%22%2c%0d%0a++%22filename%22%3a+%2299000644141418212538.wav%22%2c%0d%0a++%22exefeedback%22%3a+%22%22%2c%0d%0a++%22custfeedback%22%3a+%22%22%2c%0d%0a++%22dialstatus%22%3a+%22CANCEL%22%2c%0d%0a++%22rate%22%3a+%220%22%2c%0d%0a++%22callback%22%3a+%220%22%2c%0d%0a++%22leadid%22%3a+%220%22%2c%0d%0a++%22tktid%22%3a+%220%22%2c%0d%0a++%22last_modified%22%3a+%220000-00-00+00%3a00%3a00%22%2c%0d%0a++%22lead%22%3a+%22%22%2c%0d%0a++%22suptkt%22%3a+%22%22%2c%0d%0a++%22businessname%22%3a+%22Total+Environment+Building+Systems+Private+Ltd%22%2c%0d%0a++%22asto%22%3a+%229%22%2c%0d%0a++%22duration%22%3a+%220%22%2c%0d%0a++%22empnumber%22%3a+%227259041125%22%2c%0d%0a++%22empid%22%3a+%229%22%2c%0d%0a++%22geid%22%3a+%222%22%2c%0d%0a++%22grid%22%3a+%221%22%2c%0d%0a++%22empemail%22%3a+%22ashraya.shivaprakash%40total-environment.com%22%2c%0d%0a++%22region%22%3a+%22KA%22%2c%0d%0a++%22apikey%22%3a+%22e11073a6a09eaa9a0a67f6c6b4f34925%22%0d%0a%7d" />
+        </div>
+        <div>
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
+</body>
+</html>
